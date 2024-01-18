@@ -23,4 +23,18 @@
   	 - @ResponseBody : 
   	 		- 메소드 위에 할당 , JSON 포멧으로 전송 , 문자열 자체를 전송 	
   	 		
+ 
+ Spring 에서 라이브러리 관리 , JDK 와 Spring 버젼에 관련된 호환성 문제를 자동으로 관리 
+ 
+    - 메이븐 : xml 형식으로 관리 
+    	https://mvnrepository.com/
+    	
+    - 그래들 : 그루비 문법으로 쉽게 관리. 
+  
+ STS4에서 Java
+  
+  
+  
+  
+  
   	 		

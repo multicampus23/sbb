@@ -32,11 +32,24 @@ public class HelloWordl {
 	// abc.html 을 전송 : templates 폴더에 존재해야함. 
 	// http://localhost:8585/abc 
 	@GetMapping("/abcdef")
-	@ResponseBody
+	//@ResponseBody
 	public String view() {
 		
 		return "abc"; 
 	}
+	
+	//Thymeleaf 라이브러리 설치후 요청시 뷰 페이지 전송 
+	// http://localhost:8585/defg
+	@GetMapping("/defghi")
+	public String view2() {
+		
+		//클라이언트 요청에 대해서 비즈니스 로직을 처리 
+		
+		// 마지막 으로 view 페이지를 전송 
+		return "def";
+	}
+	
+	
 	
 	
 	
