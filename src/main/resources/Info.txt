@@ -1,0 +1,26 @@
+
+ src/main/resources 
+    templates   :  View 페이지가 위치해야될 폴더 , thymeleaf <== spring boot 
+    static		:  외부 css, 외부 js, 그림 이미지 
+    application.properties : spring boot의 각종 설정, DB 설정, JPA, View 설정, 톰켓 포트 설정 
+ 
+ 
+  build.gradle : 라이브러리 적용 파일  (그래들)
+  
+  어노테이션 : @  <== 프레임워크 의 기술을 자동으로 처리 
+  	 - @Controller  <== client 의 요청을 받는 클래스라고 정의
+  	 		- class 블락 할당 , 스프링 프레임워크에 빈(객체화) 등록 (RAM 등록) 
+  	 - @GetMapping("/hello") : client 의 get 요청을 처리하는 어노테이션 
+  	 		- 메소드 위에 할당. 
+  	 		http://localhost:8585/hello
+  	 		- url 
+  	 		- form method="get" 
+  	 		- a href = "" 
+  	 		
+  	 - @PostMapping ("longin.do") 
+  	 		- form method="post" action = "login.do" 
+  	 		
+  	 - @ResponseBody : 
+  	 		- 메소드 위에 할당 , JSON 포멧으로 전송 , 문자열 자체를 전송 	
+  	 		
+  	 		
