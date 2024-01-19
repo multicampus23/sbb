@@ -1,15 +1,19 @@
 package com.mysit.sbb;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Question {		
+	//질문정보를 저장하는 테이블 
 
 	//@Entity : DB의 테이블과 매핑 
 		//Question : 객체명 = 테이블명 
@@ -29,6 +33,12 @@ public class Question {
 	@Column(length=20000)
 	private String content; 
 	private LocalDateTime createDate; 
+	
+	//질문(Question) : 1 , 답변(Answer) : 다 
+	//하나의 질문에 대해서 모든 답변을 가져 올 수 있다. 
+	// cascade=CascadeType.REMOVE   <== 질문이 제거 될때, 질문에 해당하는 모든 답변을 함께 제거함. 
+	@OneToMany(mappedBy = "question", cascade=CascadeType.REMOVE )
+	private List<Answer> answerList; 
 	
 
 }
