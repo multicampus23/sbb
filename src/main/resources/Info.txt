@@ -5,7 +5,7 @@
     application.properties : spring boot의 각종 설정, DB 설정, JPA, View 설정, 톰켓 포트 설정 
  
  
-  build.gradle : 라이브러리 적용 파일  (그래들)
+  build.gradle : 라이브러리 적용 파일  (그래들), 설정후 오른쪽 클릭 (gradle => reflash gradle project ) 적용
   
   어노테이션 : @  <== 프레임워크 의 기술을 자동으로 처리 
   	 - @Controller  <== client 의 요청을 받는 클래스라고 정의
@@ -28,10 +28,43 @@
  
     - 메이븐 : xml 형식으로 관리 
     	https://mvnrepository.com/
+    	pom.xml : 파일에서 라이브러리 관리 
     	
     - 그래들 : 그루비 문법으로 쉽게 관리. 
+    	build.gradle  : 파일에서 관리 
+    	
   
- STS4에서 Java
+ STS4에서 Java EE로 확장 : html, jsp 
+       - 엔코딩 타입 : UTF-8 적용 
+ 
+ lombok 작동 :
+ 
+ JPA : 인터페이스 , SQL 쿼리 없이 자바의 객체로 DB의 테이블을 생성 , 
+ 		SQL 쿼리없이 자바의 객체의 메소드로 CRUD 
+ 	- 유지 보수를 아주 쉽게 할 수 있다. 
+ 	- JPA 를 구현한 구현체 하이버네이트  
+ 		
+ 	ORM : 자바의 클래스나 메소드로 DB를 접근 할 수 있도록 하는 기술,  
+ 		- 유지 보수를 쉽게함 
+ 		- 마이바티스(금융권, SI), JPA(솔루션) 
+ 
+ ===============================================
+ build.gradle : 라이브러리 등록 
+   1. JPA 
+   2. JDBC 
+   
+   3. H2 DB
+   4. Oracle DB		
+   5. MySQL DB 
+ ==================================================
+ application.properties	 <== 설정 
+ 
+ 
+ 
+ 	 
+   
+ 
+ 
   
   
   

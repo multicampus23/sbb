@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloWordl {
 	
+	String a; 
+	
 	//http://localhost:8585/hello 
 	@GetMapping("/hello")
 	@ResponseBody
