@@ -40,6 +40,10 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	
+	//JUnit Test 라이브러리
+	testImplementation 'org.junit.jupiter:junit-jupiter' 
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	
 	
