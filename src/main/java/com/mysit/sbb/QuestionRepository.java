@@ -1,5 +1,8 @@
 package com.mysit.sbb;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
@@ -7,9 +10,33 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	/* JpaRepository 에서 선언된 메소드가 상속되어 내려옴 
 	 
 	   findAll()  : select * from question  
+	   		List<Question> q = questionRepository.findAll() ; 
+	   		 
+	   findById(1) : select * from question where id = 1 ; 
+	   		Optional<Question> op = questionRepository.findById(1) ; 
+	   
 	   save()     : insert,  update 
 	   delete()   : delete 
 	 */
 	
+	// 제목으로 검색 메소드 생성  : 
+		//테이블의 Primary Key 컬럼외의 컬럼은 조건으로 검색할 경우 메소드를 만들어야함.  
+	//select * from question where subject = "?" ;  
+	List<Question> findBySubject(String subject); 
+	
+	
+	// 내용으로 검색 
+	// select * from question where content = "?" ; 
+	List<Question> findByContent(String content); 
+	
+	//제목으로 검색 : like
+	// select * from question where subject like %?% ; 
+	List<Question> findBySubjectLike(String subject); 
+		// List<Question> list = questionRepository.findBySubjectLike("%JPA%");
+	
+	
+	//내용으로 검색 : like
+	// select * from content where subject like %?% ; 
+	List<Question> findByContentLike(String content); 
 	
 }
