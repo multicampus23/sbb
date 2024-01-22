@@ -39,4 +39,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	// select * from content where subject like %?% ; 
 	List<Question> findByContentLike(String content); 
 	
+	//제목 과 내용으로 검색 
+	//select * from question where subject = "?" and content = "?"
+	List<Question> findBySubjectAndContent(String subject, String content); 
+	
+	
 }
