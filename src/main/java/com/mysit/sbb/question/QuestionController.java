@@ -6,10 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 
+
+@RequestMapping("/question")	// 하위 @GetMapping, @PostMapping 의 prefix 가 적용됨 
 @RequiredArgsConstructor
 @Controller
 public class QuestionController {
@@ -22,7 +25,7 @@ public class QuestionController {
 	private final QuestionService questionService; 
 	
 	//http://localhost:8585/question/list
-	@GetMapping("/question/list")
+	@GetMapping("/list")
 	//@ResponseBody
 	public String list(Model model) {
 		
@@ -42,8 +45,8 @@ public class QuestionController {
 	}
 	
 	//상세 글 조회 
-	
-	@GetMapping("/question/detail/{id}")
+	// http://localhost:8585/question/detail/{id}
+	@GetMapping("/detail/{id}")
 	public String detail (Model model, 
 			@PathVariable("id") Integer id 
 			) {
