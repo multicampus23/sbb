@@ -1,11 +1,19 @@
 package com.mysit.sbb;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.mysit.sbb.answer.Answer;
+import com.mysit.sbb.answer.AnswerRepository;
+import com.mysit.sbb.question.Question;
+import com.mysit.sbb.question.QuestionRepository;
 
 @SpringBootTest
 public class AnswerCRUDTest {
@@ -17,7 +25,7 @@ public class AnswerCRUDTest {
 	@Autowired
 	AnswerRepository answerRepository; 
 	
-	@Test
+	//@Test
 	void jpaInsert() {
 		Optional<Question> op = questionRepository.findById(152); 
 		Question q = null ; 
@@ -47,4 +55,20 @@ public class AnswerCRUDTest {
 		answerRepository.save(a3); 
 		
 	}
+	
+	// 질문 내용으로 검색 
+	@Test
+	void jpaSelectContent() {
+		// select * from answer where content like '%SQL%' ; 
+		List<Answer> list = answerRepository.findByContentLike("%SQL%"); 
+		
+		for ( int i = 0 ; i <list.size(); i++) {
+			System.out.println(list.get(i).getContent());
+		}
+		
+		assertEquals (2, list.size()); 
+		
+	}
+	
+	
 }

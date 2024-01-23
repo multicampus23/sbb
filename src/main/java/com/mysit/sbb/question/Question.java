@@ -1,7 +1,9 @@
-package com.mysit.sbb;
+package com.mysit.sbb.question;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.mysit.sbb.answer.Answer;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

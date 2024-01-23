@@ -1,4 +1,4 @@
-package com.mysit.sbb;
+package com.mysit.sbb.answer;
 
 import java.util.List;
 
