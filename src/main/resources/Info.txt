@@ -95,7 +95,36 @@ Repository : DAO를 Repository 라고 호칭한다. DB의 CRUD 하는 메소드�
 
 JUnit Test : 로직을 모두 생성하기전에 DB에 값이 잘 CRUD 되는지 테스트함. 
    - 라이브러리 등록 
-   - 
+
+
+
+전체적인 로직 : 
+
+client ===> Controller ===>  Service (로직을 처리) (DTO :  Entity )  ==> Repository 
+
+   Service 클래스 : 
+   		1. 반복적 코드를 방지할 수 있다. 
+   		2. 보안을 향상할 수 있다. ( Controller 에서 Entity 클래스, Repository 를 직접 접근 하지 않는다) 
+   		3. DTO(client) ==> Entity(DB) ,       Entity(DB) ==> DTO(client)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
  
