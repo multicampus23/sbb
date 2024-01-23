@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,29 @@ public class QuestionController {
 		// thymeleaf 라이브러리 설치시 view 페이지가 위치할 곳, .html 
 		return "question_list" ; 	
 	}
+	
+	//상세 글 조회 
+	
+	@GetMapping("/question/detail/{id}")
+	public String detail (Model model, 
+			@PathVariable("id") Integer id 
+			) {
+		
+		System.out.println(id);
+		// 백엔드의 로직 처리 
+		Question question = 
+				questionService.getQuestion(id); 
+		
+		System.out.println(question.getSubject());
+		System.out.println(question.getContent());
+		
+		
+		// model 에 담아서 client로 전송 
+		model.addAttribute("question" , question); 
+			
+		return "question_detail"; 
+	}
+	
+	
 
 }

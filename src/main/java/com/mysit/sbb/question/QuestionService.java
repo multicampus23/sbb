@@ -1,6 +1,7 @@
 package com.mysit.sbb.question;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,18 @@ public class QuestionService {
 	private final QuestionRepository questionRepository; 
 	
 	// question테이블의 모든 레코드를 가져와서 리턴 
+	// 리스트 페이지 
 	public List<Question> getList () {
 		return questionRepository.findAll(); 
 	}
 	
+	//상세 페이지 
+	public Question getQuestion(Integer id) {
+		Optional<Question> op = 
+				questionRepository.findById(id); 
+		
+		return op.get(); 
+	}
 	
 
 }
