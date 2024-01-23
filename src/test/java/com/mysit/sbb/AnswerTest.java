@@ -109,7 +109,6 @@ public class AnswerTest {
 		}
 		
 		assertEquals(4, list.size()); 
-		
 	}
 	
 	
