@@ -1,11 +1,16 @@
 package com.mysit.sbb;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class QuestionCRUD_Test {
@@ -51,20 +56,52 @@ public class QuestionCRUD_Test {
 	}
 	
 	//Delete 테스트 : delete() , delete할 레코드를 가지고 와서 
-	@Test
+	//@Test
 	void jpaDelete() {
 		Optional<Question> op = 
 				questionRepository.findById(102); 
 		
 		Question q = null ; 
-		if ( op.isPresent()) {	// op 의 Question 객체를 끄집어 낼때 존재할때 (null 이아닐때) 
+		if ( op.isPresent()) {	// op 의 Question 객체를 끄집어 낼때 존재할때 (null 이 아닐때) 
 			 q = op.get(); 		
 		}
 		
 		questionRepository.delete(q);
 	}
 	
+	//@Test
+	void jpaSelect() {
+		List<Question> list = 
+				questionRepository.findAll(); 
+		
+		// for 문을 사용해서 list의 question 객체를 끄집어내서 출력 
+		for ( int i = 0 ; i < list.size(); i++) {
+			System.out.println(list.get(i).getSubject());
+		}
+		
+		assertEquals ( 2 , list.size()); 
+		
+	}
 	
+	// 질문에 대한 모든 답변을 가지고 오기 
+	@Transactional
+	@Test
+	void jpaQuestionAnswerList() {
+		Optional<Question> op = questionRepository.findById(1); 
+		
+		Question q = null; 
+		if ( op.isPresent()) {
+			q = op.get(); 
+		}		
+		// 1번 질문에 대한 모든 답변 리스트가 저장되어 있음. 
+		List<Answer> answerList = q.getAnswerList(); 
+		
+		for ( int i = 0 ; i < answerList.size(); i++) {
+			System.out.println(answerList.get(i).getContent());
+		}	
+		assertEquals ( 4, answerList.size()) ; 
+		
+	}
 	
 
 }
