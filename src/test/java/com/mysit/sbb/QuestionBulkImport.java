@@ -25,10 +25,7 @@ public class QuestionBulkImport {
 			q.setContent("상세내용 : " + i);
 			q.setCreateDate(LocalDateTime.now());	
 			questionRepository.save(q); 	
-		}
-		
-		
-		
+		}	
 		
 	}
 
