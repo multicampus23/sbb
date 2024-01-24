@@ -73,7 +73,7 @@ public class QuestionController {
 	// 질문 등록 하기 : 글 등로 뷰 페이지만 전송 
 	// http://localhost:8585/question/create
 	@GetMapping ("/create")
-	public String questionCreate() {	
+	public String questionCreate(QuestionForm questionForm) {	
 		return "question_form"; 
 	}
 	
