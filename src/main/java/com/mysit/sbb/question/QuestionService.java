@@ -1,10 +1,13 @@
 package com.mysit.sbb.question;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -23,9 +26,20 @@ public class QuestionService {
 	//상세 페이지 
 	public Question getQuestion(Integer id) {
 		Optional<Question> op = 
-				questionRepository.findById(id); 
-		
+				questionRepository.findById(id); 	
 		return op.get(); 
+	}
+	
+	// question 테이블에 값 insert 
+	public void create(String subject, String content) {
+		
+		Question q = new Question(); 
+		q.setSubject(subject);
+		q.setContent(content);
+		q.setCreateDate(LocalDateTime.now());
+		
+		questionRepository.save(q); 
+		
 	}
 	
 

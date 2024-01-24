@@ -108,9 +108,20 @@ client ===> Controller ===>  Service (로직을 처리) (DTO :  Entity )  ==> Re
    		3. DTO(client) ==> Entity(DB) ,       Entity(DB) ==> DTO(client)  
 
 
+src/main/resource/templates : 뷰 페이지가 위치 (Thymeleaf) , *.html 
+src/main/resource/static    : 외부 CSS, 외부 JavaScript, Image   
 
-
-
+Thymeleaf 의 layout : JSP Include 와 동일한 처리를 담당. 
+	- 중복 된 코드를 방지 할 수 있다. 
+	- 유지 보수를 아주 쉽게 할 수 있다. 
+	- 라이브러리가 등록 되어있어야 함 
+			implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+			implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	
+유효성 체크 : 
+	폼에 값을 체크해서 DB에 저장 
+	- JavaScript : FrontEnd 체크 
+	- validate 라이브러리를 사용해서 서버에서 유효성 체크 : 모바일 환경에서 
 
 
 

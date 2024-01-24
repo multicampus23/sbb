@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 
@@ -66,6 +70,33 @@ public class QuestionController {
 		return "question_detail"; 
 	}
 	
+	// 질문 등록 하기 : 글 등로 뷰 페이지만 전송 
+	// http://localhost:8585/question/create
+	@GetMapping ("/create")
+	public String questionCreate() {	
+		return "question_form"; 
+	}
+	
+	// 질문등록 DB에 값을 받아서 저장 
+	@PostMapping("/create")
+	public String questionCreate(
+//			@RequestParam("subject") String subject, 
+//			@RequestParam("content") String content
+			@Valid QuestionForm questionForm, BindingResult bindingResult
+			) {
+		
+		if ( bindingResult.hasFieldErrors()) {
+			return "question_form"; 
+		}		
+		
+		/*
+		System.out.println("제목 : " + subject);
+		System.out.println("내용 : " + content);
+		*/ 
+		questionService.create(questionForm.getSubject(), questionForm.getContent()); 
+				
+		return "redirect:/question/list" ; 
+	}
 	
 
 }
