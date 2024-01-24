@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysit.sbb.answer.AnswerForm;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -52,7 +54,8 @@ public class QuestionController {
 	// http://localhost:8585/question/detail/{id}
 	@GetMapping("/detail/{id}")
 	public String detail (Model model, 
-			@PathVariable("id") Integer id 
+			@PathVariable("id") Integer id , 
+			AnswerForm answerForm
 			) {
 		
 		System.out.println(id);
