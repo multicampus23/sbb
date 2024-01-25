@@ -128,8 +128,23 @@ th:field="*{content}"	<== name = "content" id="content" value="content"
 
 
 
+=============================================
+스프링 시큐리티 설치하기
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 
+    톰켓 부팅 후 작동됨 
 
+로그인후 세션 유지기간 : 30분 , 180초 
+
+사용자명 : user 
+암호    : a4d08a92-ad03-4278-b8ba-0a006aa5e75d
+Using generated security password: a4d08a92-ad03-4278-b8ba-0a006aa5e75d
+
+-- 모든 페이지는 인증을 통해서 접근 
+-- H2 Console 접근이 차단 
+
+Spring Security 설정 파일에서 모들 설정 
 
 
 
