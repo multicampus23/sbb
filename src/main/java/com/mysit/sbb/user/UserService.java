@@ -19,10 +19,10 @@ public class UserService {
 	
 	// 사용자 정보를 추가하는 메소드 생성 
 	
-	public SiteUser create(String username, String password, String enail ) {
+	public SiteUser create(String username, String password, String email ) {
 		SiteUser user = new SiteUser(); 
 		user.setUsername(username);
-		user.setEmail(enail);
+		user.setEmail(email);
 		
 		// password를 DB에 컬럼에 저장할때 암호화 해서 저장 
 		// 암호화 방식이 변경되면 문제가 발생될 수 있음 , 
@@ -33,8 +33,7 @@ public class UserService {
 		
 		// DB에 저장 
 		userRepository.save(user); 
-		
-		
+			
 		return user ; 
 	}
 	
