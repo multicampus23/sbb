@@ -1,5 +1,6 @@
 package com.mysit.sbb.user;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,15 +47,45 @@ public class UserController {
 			return "signup_form"; 
 		}
 		
-		// 유효성 검증을 통과 하면 DB에 저장 				
-		userService.create(userCreateForm.getUsername(), userCreateForm.getPassword1(), 
+		// 유효성 검증을 통과 하면 DB에 저장 	
+		
+		// username 필드에 중복된 값이 존재하면 오류 메세지를 출력함.
+		//      DataIntegrityViolationException : Unique 키 컬럼에 중복된 값이 들어옴. 
+		
+		try {
+		
+			userService.create(userCreateForm.getUsername(), userCreateForm.getPassword1(), 
 				userCreateForm.getEmail()); 
 		
+		} catch (DataIntegrityViolationException e) {
+			// DB컬럼의 무결성 제약조건 위반시 작동됨
+			
+			bindingResult.reject("siginupFail", "이미 등록된 사용자 입니다. "); 
+			return "signup_form";
+			
+		} catch (Exception e) {
+			// 그외의 예외(오류) 가 발생되면 작동 
+			bindingResult.reject("siginupFailed", "알수 없는 오류 발생 ");
+			
+			return "signup_form";
+		}
 		
 		
 		// 회원 등록이 완료 되면 "/" 로 이동 
 		return "redirect:/" ; 
 	}
+	
+	// 로그인 처리 : Spring Security :  
+	// 뷰 페이지 전송   
+	@GetMapping("/user/login")
+	public String login() {
+		return "login_form"; 
+	}
+	
+	
+	// 인증 처리는 Spring Security 에서 처리함. 
+	//인증을 처리하는 @PostMappging("/user/login") <== 
+	// SecurityConfig.java 에서 인증 정보를 받아서 처리함. 
 	
 	
 
