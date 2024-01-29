@@ -1,5 +1,6 @@
 package com.mysit.sbb.question;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mysit.sbb.answer.AnswerForm;
+import com.mysit.sbb.user.SiteUser;
+import com.mysit.sbb.user.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +33,8 @@ public class QuestionController {
 	//private final QuestionRepository questionRepository; 
 	
 	private final QuestionService questionService; 
+	private final UserService userService; 
+	
 	
 	//http://localhost:8585/question/list
 	@GetMapping("/list")
@@ -106,8 +111,11 @@ public class QuestionController {
 	public String questionCreate(
 //			@RequestParam("subject") String subject, 
 //			@RequestParam("content") String content
-			@Valid QuestionForm questionForm, BindingResult bindingResult
+			@Valid QuestionForm questionForm, BindingResult bindingResult, 
+			Principal principal
 			) {
+		
+		System.out.println("###현재 로그온한 계정 : " + principal.getName());
 		
 		if ( bindingResult.hasFieldErrors()) {
 			return "question_form"; 
@@ -117,7 +125,11 @@ public class QuestionController {
 		System.out.println("제목 : " + subject);
 		System.out.println("내용 : " + content);
 		*/ 
-		questionService.create(questionForm.getSubject(), questionForm.getContent()); 
+		
+		SiteUser siteUser = userService.getUser(principal.getName()); 
+		
+		
+		questionService.create(questionForm.getSubject(), questionForm.getContent(),siteUser); 
 				
 		return "redirect:/question/list" ; 
 	}

@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.mysit.sbb.user.SiteUser;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -34,13 +36,14 @@ public class QuestionService {
 		return op.get(); 
 	}
 	
-	// question 테이블에 값 insert 
-	public void create(String subject, String content) {
+	// question 테이블에 값 insert : 글쓴이 추가됨. 
+	public void create(String subject, String content, SiteUser author) {
 		
 		Question q = new Question(); 
 		q.setSubject(subject);
 		q.setContent(content);
 		q.setCreateDate(LocalDateTime.now());
+		q.setAuthor(author);
 		
 		questionRepository.save(q); 
 		
