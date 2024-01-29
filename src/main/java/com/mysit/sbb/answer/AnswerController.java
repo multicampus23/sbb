@@ -1,5 +1,7 @@
 package com.mysit.sbb.answer;
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,8 +29,14 @@ public class AnswerController {
 			Model model, 
 			@PathVariable("id") Integer id ,
 //			@RequestParam(value="content") String content
-			@Valid AnswerForm answerForm, BindingResult bindingResult			
+			@Valid AnswerForm answerForm, BindingResult bindingResult, 
+			Principal principal
 			) {
+		
+		//뷰에서 인증된 사용자 정보를 가지고 오는 객체
+		// 인증된 계정 정보가 출력 
+		System.out.println("뷰에서 인증된 계정 정보를 출력 : " + principal.getName());
+		
 		
 		Question question = questionService.getQuestion(id); 
 		

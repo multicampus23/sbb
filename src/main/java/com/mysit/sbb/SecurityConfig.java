@@ -2,6 +2,8 @@ package com.mysit.sbb;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -48,12 +50,19 @@ public class SecurityConfig {
 					//.passwordParameter("password")
 					
 					// 로그인 실패시 이동할 페이지
-					.failureUrl("/user/error")
+					//.failureUrl("/user/error")
 					// 로그인 성공시 이동 페이지 
-					.defaultSuccessUrl("/")
-					
+					.defaultSuccessUrl("/")					
 					)
-			
+			// 로그아웃 처리
+			.logout( (logout) -> logout
+					// /user/logout  
+					.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+					// 세션을 제거후 이동할 페이지 
+					.logoutSuccessUrl("/")
+					// 사용자의 세션을 모두 제거 
+					.invalidateHttpSession(true)
+					)
 			
 		; 
 							
@@ -66,6 +75,15 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder(); 
 	}
 	
+	// 인증을 처리하는 Bean (객체) : 사용자 ID와 패스워드를 받아서 DB의 암호화된 패스워드를 가져와서
+	// 인증을 처리함. 
+	@Bean
+	AuthenticationManager authenticationManager(
+			AuthenticationConfiguration authenticationConfiguration
+			) throws Exception {	
+		return authenticationConfiguration.getAuthenticationManager(); 
+	}
+ 	
 	
 	
 }

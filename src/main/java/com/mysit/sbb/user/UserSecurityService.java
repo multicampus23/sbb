@@ -1,7 +1,12 @@
 package com.mysit.sbb.user;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,14 +45,30 @@ public class UserSecurityService implements UserDetailsService{
 		// 사용자가 존재하는 경우 : Optional 에 저장된 SiteUser객체를 끄집어 냄 
 		// siteUser.getUsername 
 		SiteUser siteUser = _siteUser.get(); 
-		
+		/*
 		System.out.println("사용자 ID : " + siteUser.getUsername());
 		System.out.println("암호 : " + siteUser.getPassword());
 		System.out.println("메일주소 : " + siteUser.getEmail());
+		*/
 		
+		// 인증되면 사용자 세션(서버의 RAM)에 권한을 부여함. 
+		
+		// 권한을 부여하는 객체를 저장하는 List 생성 
+		// GrantedAuthority : 세션에 적용할 권한을 넣어줌 
+		List<GrantedAuthority> authorities = new ArrayList<>(); 
+		
+		// 조건을 부여해서 Site_User 테이블의 username 필드의 값이 admin 라면 세션에 
+		//     ADMIN("ROLE_ADMIN") 
+		if ( "admin".equals(username) ) {
+			// ADMIN 부여하고
+			authorities.add (new SimpleGrantedAuthority(UserRole.ADMIN.getValue()) ); 
 			
+		}else {
+			// USER 부여함. 
+			authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()) ); 
+		}
 		
-		return null;
+		return new User(siteUser.getUsername(), siteUser.getPassword(),authorities);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.mysit.sbb.answer;
 import java.time.LocalDateTime;
 
 import com.mysit.sbb.question.Question;
+import com.mysit.sbb.user.SiteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,5 +36,12 @@ public class Answer {
 	// question 컬럼이름이 question_id 로 이름이 바뀜. 
 	@ManyToOne
 	private Question question ; 
+	
+	
+	// 글쓴 사용자 정보 컬럼 추가함. 
+	// FK : author_id
+	// SiteUser : 부모 , Question : 자식 
+	@ManyToOne
+	private SiteUser author;
 
 }

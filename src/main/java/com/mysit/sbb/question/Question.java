@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mysit.sbb.answer.Answer;
+import com.mysit.sbb.user.SiteUser;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,4 +49,9 @@ public class Question {
 	private List<Answer> answerList; 
 	
 
+	// 글쓴 사용자 정보 컬럼 추가함. 
+	// FK : author_id
+	// SiteUser : 부모 , Question : 자식 
+	@ManyToOne
+	private SiteUser author; 
 }
