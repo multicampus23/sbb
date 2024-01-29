@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mysit.sbb.question.Question;
 import com.mysit.sbb.question.QuestionService;
+import com.mysit.sbb.user.SiteUser;
+import com.mysit.sbb.user.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class AnswerController {
 	
 	private final AnswerService answerService;
 	private final QuestionService questionService; 
+	private final UserService userService; 
 	
 	
 	// 답변 등록 처리 
@@ -35,7 +38,7 @@ public class AnswerController {
 		
 		//뷰에서 인증된 사용자 정보를 가지고 오는 객체
 		// 인증된 계정 정보가 출력 
-		System.out.println("뷰에서 인증된 계정 정보를 출력 : " + principal.getName());
+		//System.out.println("뷰에서 인증된 계정 정보를 출력 : " + principal.getName());
 		
 		
 		Question question = questionService.getQuestion(id); 
@@ -52,7 +55,12 @@ public class AnswerController {
 		System.out.println("question id : " + id);
 		System.out.println("content : " + answerForm.getContent());
 		
-		answerService.creatAnswer(id, answerForm.getContent()); 
+		// principal.getName() : 현재로그인 한 사용자 정보가 넘어옴. 
+		// 수정 추가됨 
+		SiteUser siteUser = userService.getUser( principal.getName() ) ; 
+		
+		// 수정됨 
+		answerService.creatAnswer(id, answerForm.getContent() , siteUser); 
 		
 		return String.format("redirect:/question/detail/%s", id) ; 
 	}
