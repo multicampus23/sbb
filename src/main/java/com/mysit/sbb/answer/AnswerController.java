@@ -2,6 +2,7 @@ package com.mysit.sbb.answer;
 
 import java.security.Principal;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +27,8 @@ public class AnswerController {
 	private final UserService userService; 
 	
 	
-	// 답변 등록 처리 
+	// 답변 등록 처리
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping ("/answer/create/{id}")
 	public String createAnswer(
 			Model model, 

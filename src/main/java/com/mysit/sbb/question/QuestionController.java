@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -106,7 +108,10 @@ public class QuestionController {
 		return "question_form"; 
 	}
 	
-	// 질문등록 DB에 값을 받아서 저장 
+	// 질문등록 DB에 값을 받아서 저장
+	// 인증된 사용자만 접근 가능 				
+		//<=== Spring Security 설정 :SecurityConfig.java , @EnableMethodSecurity(prePostEnabled=true)
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
 	public String questionCreate(
 //			@RequestParam("subject") String subject, 
