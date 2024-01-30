@@ -139,5 +139,34 @@ public class QuestionController {
 		return "redirect:/question/list" ; 
 	}
 	
+	// 질문 수정 로직
+	// http://localhost:8585/question/modify/1
+	@GetMapping("/modify/{id}")
+	public String questionModify(
+			QuestionForm questionForm, 
+			@PathVariable("id") Integer id , 
+			Principal principal			
+			) {
+			// pincipal.getName();  : 현재 로그인한 사용자 정보를 출력 
+		// 넘어오는 id 변수를 가져와서 수정할 question 객체를 끄집어 옴 
+		// save() - insert 
+		// save() - update	<== 기존의 DB의 레코드(Question)를 끄집어 내서 수정 
+		
+		Question q = questionService.getQuestion(id); 
+		
+		/*
+		System.out.println("컨트롤러에서 제목 출력 : " + q.getSubject());
+		System.out.println("컨트롤러에서 내용 출력 : " + q.getContent());
+		*/ 
+		
+		// q 에 저장된 subject , content 필드의 값을 questionForm에 넣어서 클라이언트로 전송 
+		questionForm.setSubject(q.getSubject()); 
+		questionForm.setContent(q.getContent()); 
+		
+		
+		
+		return "question_form" ; 
+	}
+	
 
 }

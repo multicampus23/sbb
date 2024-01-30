@@ -36,7 +36,7 @@ public class CreatAnswer_Test {
 //				this.userService.getUser("user1"); 
 		
 		Optional<SiteUser> _author = 
-				userRepository.findByusername("user1"); 
+				userRepository.findByusername("user1") ; 
 		
 		SiteUser author = _author.get(); 
 		
