@@ -22,6 +22,7 @@ import com.mysit.sbb.user.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import oracle.jdbc.proxy.annotation.Post;
 
 
 @RequestMapping("/question")	// 하위 @GetMapping, @PostMapping 의 prefix 가 적용됨 
@@ -139,7 +140,7 @@ public class QuestionController {
 		return "redirect:/question/list" ; 
 	}
 	
-	// 질문 수정 로직
+	// 질문 정보를 가져와서 뷰 페이지로 값을 넣어줌 
 	// http://localhost:8585/question/modify/1
 	@GetMapping("/modify/{id}")
 	public String questionModify(
@@ -162,11 +163,32 @@ public class QuestionController {
 		// q 에 저장된 subject , content 필드의 값을 questionForm에 넣어서 클라이언트로 전송 
 		questionForm.setSubject(q.getSubject()); 
 		questionForm.setContent(q.getContent()); 
-		
-		
-		
+			
 		return "question_form" ; 
 	}
+	
+	// 질문 수정된 내용을 받아서 DB에 저장 , save() 기존의 question 객체를 끄집어내서 수정후 저장 
+	// http://localhost:8585/question/modify/1
+	@PostMapping("/modify/{id}")
+	public String questionModify (
+			@Valid QuestionForm questionForm, 
+			BindingResult bindingResult, 
+			@PathVariable("id") Integer id , 
+			Principal principal			
+			) {
+		
+		// questionForm 에 주입된 값을 확인 
+		if (bindingResult.hasErrors()) {
+			return "question_form" ; 
+		}
+		
+		// 수정된 값을 DB에 저장하는 Service 메소드 호출 
+		
+		
+		
+		return null ; 
+	}
+	
 	
 
 }
