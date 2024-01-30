@@ -18,7 +18,9 @@ public class CreatAnswer_Test {
 	
 	@Autowired
 	private AnswerService answerService; 
+	@Autowired
 	private UserService userService ; 
+	@Autowired
 	private UserRepository userRepository; 
 	
 	
@@ -36,7 +38,7 @@ public class CreatAnswer_Test {
 //				this.userService.getUser("user1"); 
 		
 		Optional<SiteUser> _author = 
-				userRepository.findByusername("user1") ; 
+				userRepository.findById(1L);
 		
 		SiteUser author = _author.get(); 
 		
