@@ -74,6 +74,13 @@ public class QuestionService {
 		// 수정 : update 
 		questionRepository.save(question); 
 	}
+	
+	//삭제 메소드 
+	public void questionDelete(Question question) {
+		
+		questionRepository.delete(question);
+		
+	}
 
 	
 

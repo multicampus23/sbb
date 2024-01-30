@@ -34,13 +34,13 @@ public class CreatAnswer_Test {
 		// 첫 번째 인자 : id  : question 테이블의 id 
 		// 두 번째 인자 : content  : 답변 내용 
 		// 세 번째 인자 : author : SiteUser 객체가 
-//		SiteUser author = 
-//				this.userService.getUser("user1"); 
+		SiteUser author = 
+				this.userService.getUser("user1"); 
 		
-		Optional<SiteUser> _author = 
-				userRepository.findById(1L);
+//		Optional<SiteUser> _author = 
+//				userRepository.findById(1L);
 		
-		SiteUser author = _author.get(); 
+//		SiteUser author = _author.get(); 
 		
 		
 		answerService.creatAnswer(1852	, "1852 질문에 대한 답변 입니다. ", author);

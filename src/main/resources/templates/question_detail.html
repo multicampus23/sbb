@@ -14,18 +14,25 @@
                     <div th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
                 </div>
             </div>
-            <!--  수정 버튼 추가  -->
+            <!--  수정 /삭제 버튼 추가  -->
             <div class = "my-3">
             	<a th:href="@{|/question/modify/${question.id}|}" 
             		sec:authorize = "isAuthenticated"
             		th:if ="${question.author != null and 
-            		#authentication.getPrincipal().getUsername() == question.author.username}"           	
+            			#authentication.getPrincipal().getUsername() == question.author.username}"           	
             		th:text ="수정"
             		class="btn btn-sm btn-outline-secondary"
-            	>
-            	
-	           	</a>                       
-            </div>
+            	>          	
+	           	</a> 
+	           	<a th:href="@{|/question/delete/${question.id}|}"
+	           		sec:authorize = "isAuthenticated"
+            		th:if ="${question.author != null and 
+            			#authentication.getPrincipal().getUsername() == question.author.username}"
+	           		th:text="삭제"
+	           		class="btn btn-sm btn-outline-secondary"
+	           	>	           	
+	           	</a>	           	                      
+             </div>
             
             
         </div>

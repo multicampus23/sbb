@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.mysit.sbb.answer.AnswerForm;
 import com.mysit.sbb.user.SiteUser;
@@ -183,11 +185,36 @@ public class QuestionController {
 		}
 		
 		// 수정된 값을 DB에 저장하는 Service 메소드 호출 
+			//수정할 Question 객체를 끄집어냄 
+		Question q = questionService.getQuestion(id); 
+		questionService.modify(q, questionForm.getSubject(), questionForm.getContent()); 
 		
-		
-		
-		return null ; 
+		// 수정 이후에 이동할 페이지 
+		return String.format("redirect:/question/detail/%s", id) ; 
 	}
+	
+	// 삭제 요청에 대한 처리 
+	@GetMapping("/delete/{id}")
+	public String questionDelete(
+			@PathVariable("id") Integer id , 
+			Principal principal 			
+			) {
+		// id 값을 가지고 Question 객체 
+		Question q = questionService.getQuestion(id); 
+		
+		// URL를 사용해서 삭제 할 수 없도록 한다. 
+		//현재 로그온한 계정과 DB의 저장된 username 과 같지 않을때 예외 발생 
+		if (! principal.getName().equals(q.getAuthor().getUsername())) {
+			// 예외를 강제로 발생 김 
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제할 권한이 없습니다. "); 
+		}
+				
+		// 삭제됨 
+		questionService.questionDelete(q); 
+				
+		return "redirect:/" ; 
+	}
+	
 	
 	
 
