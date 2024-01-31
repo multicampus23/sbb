@@ -114,6 +114,32 @@ public class AnswerController {
 		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
 	}
 	
+	// answer 삭제
+	
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/answer/delete/{id}")
+	public String answerDelete(
+			@PathVariable("id") Integer id , 
+			Principal principal 			
+			) {
+		// id 로 Answer 객체를 반환 
+		Answer answer = answerService.getAnswer(id); 
+		
+		// 현재 로그온한 계정이 DB에 저장된 계정과 동일할 경우 삭제 
+		if ( ! principal.getName().equals(answer.getAuthor().getUsername()) ) {
+			// 강제로 오류 발생 : 예외 처리 
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"); 			
+		}
+		
+		
+		// 삭제 
+		answerService.delete(answer); 
+		
+		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
+	}
+	
+	
+	
 	
 
 }

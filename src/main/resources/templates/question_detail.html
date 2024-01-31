@@ -68,8 +68,11 @@
             	></a>
             	
             	
-            	<a th:text="삭제"
-            		class="btn btn-sm btn-outline-secondary"
+            	<a 
+            		href="javascript:void(0)"
+	           	    th:data-uri="@{|/answer/delete/${answer.id}|}"           	
+            		th:text="삭제"
+            		class="delete btn btn-sm btn-outline-secondary"
             		sec:authorize = "isAuthenticated"
             		th:if ="${answer.author != null and 
             			#authentication.getPrincipal().getUsername() == answer.author.username}"
