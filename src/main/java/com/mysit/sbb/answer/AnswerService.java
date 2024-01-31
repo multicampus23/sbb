@@ -54,6 +54,14 @@ public class AnswerService {
 		
 	}
 	
+	// answer 의 ID를 input 받아서 answer 객체를 리턴 
+	public Answer getAnswer(Integer id) {
+		Optional<Answer> op = 
+				answerRepository.findById(id); 
+		
+		return op.get(); 
+	}
+	
 	
 
 }

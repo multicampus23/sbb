@@ -22,9 +22,7 @@ public class CreatAnswer_Test {
 	private UserService userService ; 
 	@Autowired
 	private UserRepository userRepository; 
-	
-	
-	
+		
 	// AnswerService의 createAnswer(Integer id , String content, SiteUser author) 
 	// answer 테이블의 값이 잘 들어가는지 테스트 
 	@Transactional
