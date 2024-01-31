@@ -71,6 +71,7 @@ public class AnswerController {
 	}
 	
 	// 답변을 수정할 수 있는 뷰 페이지전송 
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/answer/modify/{id}")
 	public String answerModify(
 			AnswerForm answerForm, 
@@ -95,6 +96,7 @@ public class AnswerController {
 	
 	
 	// 수정 폼에서 넘어오는 값을 받아서 저장 
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/answer/modify/{id}")
 	public String answerModify(
 			@PathVariable("id") Integer id , 
@@ -107,8 +109,7 @@ public class AnswerController {
 		
 		//수정 완료 
 		answerService.modify(answer, answerForm.getContent()); 
-		
-		
+			
 		//수정 완료후 이동 페이지 
 		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
 	}
