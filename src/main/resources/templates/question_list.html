@@ -1,6 +1,19 @@
 <html layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-3">
+	
+	<div class = "row my-3">
+		<div class="col-6">
+			<a th:href="@{/question/create}" class= "btn btn-primary"> 질문등록 하기 </a></div>
+		<div class="col-6">
+			<div class = "input-group">
+				<input type= "text" id= "search_kw" class="form-control" th:value="${kw}">
+				<button class="btn btn-outline-secondary" type="button" id= "btn_search"> 찾기 </button>
+			
+			</div>		
+		</div>
+	</div>
+
 	<table class="table">
 		<thead class="table-dark">
 			<tr><th> 번호 </th> <th style="width:50%" > 제목 </th><th> 글쓴이 </th> <th> 작성일시 </th> 
@@ -61,7 +74,7 @@
     <!-- 페이징처리 끝 -->
 	
 	
-	<a th:href="@{/question/create}" class= "btn btn-primary"> 질문등록 하기 </a>
+
 	
 	
 </div>
