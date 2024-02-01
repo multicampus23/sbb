@@ -130,15 +130,31 @@ public class AnswerController {
 			// 강제로 오류 발생 : 예외 처리 
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"); 			
 		}
-		
-		
+			
 		// 삭제 
 		answerService.delete(answer); 
 		
 		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
 	}
 	
-	
+	//답변 추천 기능 처리 
+	@PreAuthorize("isAuthenticated()")   //로그인 되었을때 접근 가능, 인증안된경우 인증 페이지로 던짐.
+	@GetMapping ("/answer/vote/{id}")
+	public String answerVote(
+			@PathVariable("id") Integer id, 
+			Principal principal 			
+			) {
+		// id 를 가지고 answer 객체를 끄집어 내어와야함. 
+		Answer answer = answerService.getAnswer(id); 
+		// principal 를 가지고 SiteUser 객체를 끄집어내야 함. 
+		SiteUser siteUser = userService.getUser(principal.getName()); 
+		
+		// DB에 저장 
+		answerService.vote(answer, siteUser); 
+		
+		//투표후 : 질문 상세 페이지로 이동됨  
+		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
+	}
 	
 	
 

@@ -75,6 +75,15 @@ public class AnswerService {
 		answerRepository.delete(answer);
 	}
 	
+	// 추천을 DB에 저장 하는 로직 
+	public void vote(Answer answer, SiteUser siteUser) {
+		
+		// answer 
+		answer.getVoter().add(siteUser); 
+		
+		answerRepository.save(answer); 
+		
+	}
 	
 	
 

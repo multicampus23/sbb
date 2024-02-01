@@ -20,8 +20,21 @@
                     <div th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm:ss')}"></div>
                 </div>
             </div>
-            <!--  수정 /삭제 버튼 추가  -->
+            <!-- 질문 :  추천 / 수정 /삭제 버튼 추가  -->
             <div class = "my-3">
+            	
+            	<a 
+            		href="javascript:void(0)"
+	           	    th:data-uri="@{|/question/vote/${question.id}|}"
+            		class="recomend btn btn-sm btn-outline-secondary"           	
+            	>
+            		추천 
+            		<span 
+            			class = "badge rounded-pill bg-success"
+            			th:text="${#lists.size(question.voter)}"
+            		> </span> 
+            	</a>
+            
             	<a th:href="@{|/question/modify/${question.id}|}" 
             		sec:authorize = "isAuthenticated"
             		th:if ="${question.author != null and 
@@ -69,8 +82,21 @@
                     <div th:text="${#temporals.format(answer.createDate, 'yyyy-MM-dd HH:mm')}"></div>
                 </div>
             </div>
-            <!-- 수정 / 삭제 버튼 추가  -->
+            <!-- 답변 : 추천 / 수정 / 삭제 버튼 추가  -->
             <div class="my-3">
+            	<a 
+            		href="javascript:void(0)"
+	           	    th:data-uri="@{|/answer/vote/${answer.id}|}"
+            		class="recomend btn btn-sm btn-outline-secondary"  
+            	>
+            		추천 <span
+            			class = "badge rounded-pill bg-success"
+            			th:text="${#lists.size(answer.voter)}"
+            		> </span> 
+            	</a>
+            
+            
+            
             	<a 
             		th:href = "@{|/answer/modify/${answer.id}|}"
             		th:text="수정"
@@ -122,6 +148,19 @@ Array.from(delete_elements).forEach(function(element) {
         };
     });
 });
+
+const recomend_elements = document.getElementsByClassName("recomend");
+Array.from(recomend_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 추천 하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+
+
+
+
 </script>
 
 </html>
