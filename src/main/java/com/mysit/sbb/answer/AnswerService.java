@@ -24,7 +24,7 @@ public class AnswerService {
 	// Select 는 리턴 : List<Answer>, Answer 
 	
 	// 질문 등록 : question_id, content, author  
-	public void creatAnswer (Integer id , String content, SiteUser author) {
+	public Answer creatAnswer (Integer id , String content, SiteUser author) {
 		
 		Answer answer = new Answer(); 
 		answer.setContent(content);
@@ -42,6 +42,8 @@ public class AnswerService {
 		answer.setAuthor(author);
 		
 		answerRepository.save(answer); 
+		
+		return answer ; 
 	
 	}
 	

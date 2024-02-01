@@ -31,6 +31,7 @@ public class AnswerController {
 	
 	
 	// 답변 등록 처리
+	// 앵커 태그를 사용해서 등록 이후 그 위치로 이동 <== 수정됨 - 2월 1일 
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping ("/answer/create/{id}")
 	public String createAnswer(
@@ -65,9 +66,11 @@ public class AnswerController {
 		SiteUser siteUser = userService.getUser( principal.getName() ) ; 
 		
 		// 수정됨 
-		answerService.creatAnswer(id, answerForm.getContent() , siteUser); 
+		Answer answer = 
+				answerService.creatAnswer(id, answerForm.getContent() , siteUser); 
 		
-		return String.format("redirect:/question/detail/%s", id) ; 
+		return String.format("redirect:/question/detail/%s#answer_%s", 
+				answer.getQuestion().getId(), answer.getId()) ; 
 	}
 	
 	// 답변을 수정할 수 있는 뷰 페이지전송 
@@ -96,6 +99,7 @@ public class AnswerController {
 	
 	
 	// 수정 폼에서 넘어오는 값을 받아서 저장 
+	// 앵커 를 이용해서 수정이후 해당 위치로 이동 
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/answer/modify/{id}")
 	public String answerModify(
@@ -111,7 +115,9 @@ public class AnswerController {
 		answerService.modify(answer, answerForm.getContent()); 
 			
 		//수정 완료후 이동 페이지 
-		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
+		return String.format("redirect:/question/detail/%s#answer_%s", 
+				answer.getQuestion().getId(), answer.getId()) ; 
+		
 	}
 	
 	// answer 삭제
@@ -153,7 +159,8 @@ public class AnswerController {
 		answerService.vote(answer, siteUser); 
 		
 		//투표후 : 질문 상세 페이지로 이동됨  
-		return String.format("redirect:/question/detail/%s", answer.getQuestion().getId()) ; 
+		return String.format("redirect:/question/detail/%s#answer_%s", 
+				answer.getQuestion().getId(), answer.getId()) ; 
 	}
 	
 	
