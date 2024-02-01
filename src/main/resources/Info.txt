@@ -180,7 +180,26 @@ client==> questionForm(DTO) ==> Controller ==> Service(로직처리) ===> Reposi
 3.  site_user 테이블의 user_name 컬럼에서 검색 
 	select * from site_user where username like '%?%'; 
 	
+실제 SQL 쿼리 ===> JPQL : 객체 타입의 쿼리 <== 모든 DBMS에 공통으로 작동되는 쿼리 
  
+ ===========DB에 쿼리 =====================================================
+ select  distinct q.id , q.subject, q.content, u1.username , a.content, 
+            q.author_id , q.create_date, q.modify_date
+from question q
+   left outer join site_user u1 
+        on q.author_id = u1.id 
+   left outer join answer a 
+         on q.id = a.question_id 
+    left outer join site_user u2 
+         on a.author_id = u2.id 
+    
+where 
+      q.subject like '%스프링%' 
+      or u1.username like '%스프링%' 
+      or a.content like '%스프링%'
+      or u2.username like '%스프링%' 
+      
+ =================================================================
  	 
    
  

@@ -41,11 +41,12 @@ public class QuestionController {
 	private final UserService userService; 
 	
 	
-	//http://localhost:8585/question/list
+	//http://localhost:8585/question/list?page=0&kw='스프링'
 	@GetMapping("/list")
 	//@ResponseBody
 	public String list(Model model, 
-			@RequestParam(value = "page", defaultValue="0") int page  
+			@RequestParam(value = "page", defaultValue="0") int page, 
+			@RequestParam(value="kw", defaultValue="") String kw
 			
 			) {
 		
@@ -56,7 +57,7 @@ public class QuestionController {
 		//List<Question> questionList = questionService.getList();  
 		
 		//페이징 처리된 객체를 받음 
-		Page<Question> paging = questionService.getList(page); 
+		Page<Question> paging = questionService.getList(page , kw); 
 
 		// paging 에 등록 되어 있는 중요 메소드 출력
 		/*
@@ -74,6 +75,7 @@ public class QuestionController {
 		//model.addAttribute("questionList", questionList); 
 		
 		model.addAttribute("paging", paging); 
+		model.addAttribute("kw", kw); 
 		
 		
 		//templates/question_list.html  

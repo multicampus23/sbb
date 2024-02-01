@@ -73,10 +73,15 @@
     </div>
     <!-- 페이징처리 끝 -->
 	
-	
-
-	
+	<!-- 검색시 변수 값을 hidden 에 적용해서 서버로 전송  -->
+	<form th:action = "@{/question/list}" method="get" id="searchForm">
+		<input type="hidden" name="kw" id= "kw" th:value="${kw}"> 
+		<input type="hidden" name="page" id="page" th:value="${paging.number}"> 
+	</form>
 	
 </div>
+
+
+
 
 </html>
