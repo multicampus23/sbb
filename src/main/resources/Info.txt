@@ -241,10 +241,17 @@ where
      	sudo apt install openjdk-17-jre-headless
  		java -version
  		
- AWS의 Ubuntu VM은 기본적으로 방화벽이 비활성화되어 있음. 
-    - AWS의 방화벽만 열어주면 됨. 
-    	TCP 8686 포트 오픈 	
+ 	  - 프로잭트 실행 : localhost:8686
+ 	  	java -jar sbb-0.0.1-SNAPSHOT.jar
+ 	  			
+ 	   - AWS의 Ubuntu VM은 기본적으로 방화벽이 비활성화되어 있음. 
+    		- AWS의 방화벽만 열어주면 됨. 
+    		TCP 8686 포트 오픈 	
  
+ 		- Ubuntu-VM의 공인 IP로 접속 
+ 			http://공인IP:8686 
+ 			
+ 		
  
    
  
