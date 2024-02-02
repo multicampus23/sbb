@@ -201,6 +201,34 @@ where
       
  =================================================================
  	 
+ 배포 : 
+    - war : JSP , 외장 톰켓 					<== 서버 : JDK 17, 톰켓 : 10.1  
+    - jar : Spring Boot , 톰켓을 내장 배포 		<== 서버 : JDK 17 
+    	
+    
+    - 도커 환경에 배포 : 						<== 서버 : 도커만 설치 
+    	- 도커 이미지 : JDK17 + 톰켓:10.1 + 개발소스 
+    
+ Jar 배포 파일 만들기 
+ 	run => run configuration => 
+ 
+    배포 파일 위치 : WorkSpace\sbb\build\libs\sbb-0.0.1-SNAPSHOT.jar
+ 	배포 파일 이름 : sbb-0.0.1-SNAPSHOT.jar
+ 	
+ 	서버 : jdk17 설치 후 
+ 		java -jar sbb-0.0.1-SNAPSHOT.jar
+ 		방화벽 : AWS 방화벽 , Windows 방화벽 (wf.msc) 
+ 	
+ 	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
    
  
  
