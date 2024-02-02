@@ -216,17 +216,34 @@ where
  	배포 파일 이름 : sbb-0.0.1-SNAPSHOT.jar
  	
  	서버 : jdk17 설치 후 
- 		java -jar sbb-0.0.1-SNAPSHOT.jar
+ 		java -jar sbb-0.0.1-SNAPSHOT.jar				<== TCP 8686
  		방화벽 : AWS 방화벽 , Windows 방화벽 (wf.msc) 
  	
- 	
+ 		== 관리자 권한으로 명령프롬프트가 실행되어야함. ======
+ 		- Forground Mode 실행 
+ 		java -jar -Dserver.port=80 sbb-0.0.1-SNAPSHOT.jar
+ 		
+ 		- Background Mode 실행 
+ 		java -jar -Dserver.port=80 sbb-0.0.1-SNAPSHOT.jar &
  
+ AWS Linux VM에 Spring Boot 배포 
+   - 컴퓨터 이름 바꾸기 : hostname 		<== 리부팅 필요 
+   		sudo hostnamectl set-hostname Ubuntu-vm
+   		sudo reboot 
+   	- 날짜/타임존 변경 : UTC 시간대로 로그가 남음. 
+   		date    : 현재 시스템에 셋팅된 날짜 / 시간 / 시간대 UTC 
+   		// 시스템의 시간대를 서울 시간대로 설정 
+ 		sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime 
  
- 
- 
- 
- 
- 
+     - JDK 17 설치 
+     	java -version 
+     	sudo apt update 
+     	sudo apt install openjdk-17-jre-headless
+ 		java -version
+ 		
+ AWS의 Ubuntu VM은 기본적으로 방화벽이 비활성화되어 있음. 
+    - AWS의 방화벽만 열어주면 됨. 
+    	TCP 8686 포트 오픈 	
  
  
    
