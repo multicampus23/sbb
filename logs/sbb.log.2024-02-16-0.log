@@ -1,0 +1,72 @@
+2024-02-16 18:22:21.927  INFO 20792 --- [restartedMain] com.mysit.sbb.SbbApplication             : Starting SbbApplication using Java 17.0.9 with PID 20792 (C:\WorkSpace-STS4\sbb\bin\main started by hi in C:\WorkSpace-STS4\sbb)
+2024-02-16 18:22:21.931  INFO 20792 --- [restartedMain] com.mysit.sbb.SbbApplication             : No active profile set, falling back to 1 default profile: "default"
+2024-02-16 18:22:22.148  INFO 20792 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\hi\.gradle\caches\modules-2\files-2.1\com.oracle.database.jdbc\ojdbc11\21.9.0.0\1aad2e20684ee075bb9ebdca2d83f028e4fd35fa\ojdbc11-21.9.0.0.jar referenced one or more files that do not exist: file:/C:/Users/hi/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc11/21.9.0.0/1aad2e20684ee075bb9ebdca2d83f028e4fd35fa/oraclepki.jar
+2024-02-16 18:22:22.148  INFO 20792 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-02-16 18:22:22.148  INFO 20792 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-02-16 18:22:22.684  INFO 20792 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-16 18:22:22.732  INFO 20792 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 3 JPA repository interfaces.
+2024-02-16 18:22:23.239  INFO 20792 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8585 (http)
+2024-02-16 18:22:23.248  INFO 20792 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-16 18:22:23.248  INFO 20792 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-16 18:22:23.291  INFO 20792 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-16 18:22:23.292  INFO 20792 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1143 ms
+2024-02-16 18:22:23.318  INFO 20792 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-16 18:22:23.537  INFO 20792 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:~/local200 user=SA
+2024-02-16 18:22:23.539  INFO 20792 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-02-16 18:22:23.546  INFO 20792 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:~/local200'
+2024-02-16 18:22:23.645  INFO 20792 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-16 18:22:23.687  INFO 20792 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-16 18:22:23.714  INFO 20792 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-02-16 18:22:23.899  INFO 20792 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-16 18:22:23.944  WARN 20792 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-02-16 18:22:24.768  INFO 20792 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-16 18:22:24.802  INFO 20792 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-16 18:22:25.065  INFO 20792 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-16 18:22:25.484  WARN 20792 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-16 18:22:25.797  INFO 20792 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1508df3f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58d67dd1, org.springframework.security.web.context.SecurityContextHolderFilter@307db672, org.springframework.security.web.header.HeaderWriterFilter@313496a0, org.springframework.web.filter.CorsFilter@3ac08b56, org.springframework.security.web.csrf.CsrfFilter@2e10bc16, org.springframework.security.web.authentication.logout.LogoutFilter@5a443604, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@264d467b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78890e3c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@127d8227, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32554daf, org.springframework.security.web.access.ExceptionTranslationFilter@7fd0e43e, org.springframework.security.web.access.intercept.AuthorizationFilter@6a368dcb]
+2024-02-16 18:22:26.044  INFO 20792 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-02-16 18:22:26.080  INFO 20792 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8585 (http) with context path ''
+2024-02-16 18:22:26.087  INFO 20792 --- [restartedMain] com.mysit.sbb.SbbApplication             : Started SbbApplication in 4.452 seconds (process running for 5.256)
+2024-02-16 18:22:44.249  INFO 20792 --- [http-nio-8585-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-16 18:22:44.250  INFO 20792 --- [http-nio-8585-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-16 18:22:44.251  INFO 20792 --- [http-nio-8585-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-02-16 18:22:44.305  INFO 20792 --- [http-nio-8585-exec-2] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:23:21.446  INFO 20792 --- [http-nio-8585-exec-10] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:23:38.485  INFO 20792 --- [http-nio-8585-exec-8] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:23:49.086  INFO 20792 --- [http-nio-8585-exec-5] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:25:23.911  INFO 20792 --- [http-nio-8585-exec-3] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:37:07.207  INFO 20792 --- [http-nio-8585-exec-6] c.mysit.sbb.question.QuestionController  : page:0, kw:
+2024-02-16 18:37:13.769  INFO 20792 --- [http-nio-8585-exec-8] c.mysit.sbb.question.QuestionController  : page:1, kw:
+2024-02-16 18:37:15.028  INFO 20792 --- [http-nio-8585-exec-1] c.mysit.sbb.question.QuestionController  : page:2, kw:
+2024-02-16 18:37:15.467  INFO 20792 --- [http-nio-8585-exec-4] c.mysit.sbb.question.QuestionController  : page:3, kw:
+2024-02-16 18:37:16.059  INFO 20792 --- [http-nio-8585-exec-3] c.mysit.sbb.question.QuestionController  : page:4, kw:
+2024-02-16 18:37:17.171  INFO 20792 --- [http-nio-8585-exec-7] c.mysit.sbb.question.QuestionController  : page:5, kw:
+2024-02-16 18:37:17.508  INFO 20792 --- [http-nio-8585-exec-2] c.mysit.sbb.question.QuestionController  : page:6, kw:
+2024-02-16 18:37:18.243  INFO 20792 --- [http-nio-8585-exec-6] c.mysit.sbb.question.QuestionController  : page:9, kw:
+2024-02-16 18:37:18.851  INFO 20792 --- [http-nio-8585-exec-10] c.mysit.sbb.question.QuestionController  : page:13, kw:
+2024-02-16 18:37:19.595  INFO 20792 --- [http-nio-8585-exec-1] c.mysit.sbb.question.QuestionController  : page:18, kw:
+2024-02-16 18:37:20.283  INFO 20792 --- [http-nio-8585-exec-4] c.mysit.sbb.question.QuestionController  : page:19, kw:
+2024-02-16 18:37:21.153  INFO 20792 --- [http-nio-8585-exec-8] c.mysit.sbb.question.QuestionController  : page:21, kw:
+2024-02-16 18:37:21.675  INFO 20792 --- [http-nio-8585-exec-7] c.mysit.sbb.question.QuestionController  : page:24, kw:
+2024-02-16 18:37:22.530  INFO 20792 --- [http-nio-8585-exec-9] c.mysit.sbb.question.QuestionController  : page:28, kw:
+2024-02-16 18:37:22.994  INFO 20792 --- [http-nio-8585-exec-6] c.mysit.sbb.question.QuestionController  : page:33, kw:
+2024-02-16 18:37:23.947  INFO 20792 --- [http-nio-8585-exec-10] c.mysit.sbb.question.QuestionController  : page:32, kw:
+2024-02-16 18:37:24.819  INFO 20792 --- [http-nio-8585-exec-1] c.mysit.sbb.question.QuestionController  : page:30, kw:
+2024-02-16 18:37:25.770  INFO 20792 --- [http-nio-8585-exec-4] c.mysit.sbb.question.QuestionController  : page:29, kw:
+2024-02-16 18:37:26.483  INFO 20792 --- [http-nio-8585-exec-8] c.mysit.sbb.question.QuestionController  : page:30, kw:
+2024-02-16 18:37:27.515  INFO 20792 --- [http-nio-8585-exec-7] c.mysit.sbb.question.QuestionController  : page:31, kw:
+2024-02-16 18:37:28.642  INFO 20792 --- [http-nio-8585-exec-9] c.mysit.sbb.question.QuestionController  : page:28, kw:
+2024-02-16 18:37:29.147  INFO 20792 --- [http-nio-8585-exec-6] c.mysit.sbb.question.QuestionController  : page:26, kw:
+2024-02-16 18:37:29.650  INFO 20792 --- [http-nio-8585-exec-10] c.mysit.sbb.question.QuestionController  : page:26, kw:
+2024-02-16 18:37:30.124  INFO 20792 --- [http-nio-8585-exec-1] c.mysit.sbb.question.QuestionController  : page:28, kw:
+2024-02-16 18:37:31.651  INFO 20792 --- [http-nio-8585-exec-4] c.mysit.sbb.question.QuestionController  : page:29, kw:
+2024-02-16 18:37:32.163  INFO 20792 --- [http-nio-8585-exec-8] c.mysit.sbb.question.QuestionController  : page:30, kw:
+2024-02-16 18:37:32.570  INFO 20792 --- [http-nio-8585-exec-7] c.mysit.sbb.question.QuestionController  : page:31, kw:
+2024-02-16 18:37:32.786  INFO 20792 --- [http-nio-8585-exec-9] c.mysit.sbb.question.QuestionController  : page:32, kw:
+2024-02-16 18:37:33.059  INFO 20792 --- [http-nio-8585-exec-6] c.mysit.sbb.question.QuestionController  : page:33, kw:
+2024-02-16 18:37:33.363  INFO 20792 --- [http-nio-8585-exec-10] c.mysit.sbb.question.QuestionController  : page:34, kw:
+2024-02-16 18:37:33.536  INFO 20792 --- [http-nio-8585-exec-1] c.mysit.sbb.question.QuestionController  : page:35, kw:
+2024-02-16 18:38:39.688  INFO 20792 --- [RMI TCP Connection(26)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-02-16 18:38:39.702  INFO 20792 --- [RMI TCP Connection(26)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-16 18:38:39.705  INFO 20792 --- [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-02-16 18:38:39.909  INFO 20792 --- [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -2,6 +2,7 @@ package com.mysit.sbb;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -49,6 +50,15 @@ public class HelloWordl {
 		
 		// 마지막 으로 view 페이지를 전송 
 		return "def";
+	}
+	
+	
+	
+	@GetMapping ("/test11")
+	public String view3(@RequestParam String type) {
+		System.out.println("type : " + type );
+		
+		return "redirect:/"; 
 	}
 	
 	

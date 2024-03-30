@@ -8,6 +8,7 @@ import com.mysit.sbb.user.SiteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,14 +38,14 @@ public class Answer {
 	// @MayToOne : JPA에서 테이블 간의 관계 설정 , 자식 테이블(Answer)에서 부모 테이블(Question)을 참조 
 	// question 컬럼은 Question 테이블의 Primary Key 의 값이 들어옴 
 	// question 컬럼이름이 question_id 로 이름이 바뀜. 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Question question ; 
 	
 	
 	// 글쓴 사용자 정보 컬럼 추가함. 
 	// FK : author_id
 	// SiteUser : 부모 , Question : 자식 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private SiteUser author;
 	
 	// 별도의 테이블이 생성됨 : answer_voter 테이블이 생성됨 
@@ -52,7 +53,7 @@ public class Answer {
 		// answer_id : answer 테이블의 id를 참조
 		// voter_id : site_user 테이블의 id를 참조함. 
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	private Set<SiteUser> voter; 
 
 }

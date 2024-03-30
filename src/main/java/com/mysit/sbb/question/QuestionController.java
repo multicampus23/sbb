@@ -25,7 +25,7 @@ import com.mysit.sbb.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
+
 
 @Slf4j
 @RequestMapping("/question")	// 하위 @GetMapping, @PostMapping 의 prefix 가 적용됨 
